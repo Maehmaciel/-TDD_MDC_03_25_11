@@ -5,6 +5,8 @@
  */
 package com.maria.tdd_mdc_03_25_11;
 
+import java.util.Objects;
+
 /**
  *
  * @author maeh
@@ -24,10 +26,18 @@ public class MathUtil {
            return a;
         }
         
-        if(a % b != 0){
-            return 1;
+        return mdc(a-b,b);
+    }
+    
+    public static int mdc(int ...args){
+        Objects.requireNonNull(args, "Valor nulo");
+        if(args.length == 0){
+            throw new IllegalArgumentException("Nenhum vallor informado");
         }
-       
-        return -1;
+       int a = args[0];
+       for(int b: args){
+            a = mdc(a,b);
+       }
+       return a;
     }
 }

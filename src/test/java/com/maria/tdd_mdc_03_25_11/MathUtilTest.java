@@ -113,9 +113,45 @@ public class MathUtilTest {
     public void testMdcP7TudoNegativo() {
        final int a =-12;
        final int b = -6;
-       final int esperado = MathUtil.mdc(a,b);
+       final int esperado = 6;
        int obtido = MathUtil.mdc(b,a);
        assertEquals(esperado,obtido);
+       
+    }
+    
+       @Test
+    public void testMdcGeralIndivisiveis() {
+       final int a =30;
+       final int b = 12;
+       final int esperado = 6;
+       int obtido = MathUtil.mdc(b,a);
+       assertEquals(esperado,obtido);
+       
+    }
+    
+         @Test
+        public void testMdcMultiplosValores() {
+       final int a = 30;
+       final int b = 12;
+       final int c = 4;
+       final int esperado = 2;
+       int obtido = MathUtil.mdc(b,a,c);
+       assertEquals(esperado,obtido);
+       
+    }
+        
+        
+       @Test
+        public void testMdcNenhumParametro() {
+      
+       assertThrows(IllegalArgumentException.class,()->MathUtil.mdc());
+       
+    }
+        
+    @Test
+        public void testMdcNull() {
+      
+       assertThrows(NullPointerException.class,()->MathUtil.mdc(null));
        
     }
     
